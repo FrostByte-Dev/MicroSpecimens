@@ -1,3 +1,6 @@
+"""
+Provides recommended agar plates by time of micro specimen. Can also search up plates/elements to see which specimen site uses them.
+"""
 stool = ["selenite", "hektoen", "mac", "smac", "macconkey", "sorbitol", "campy", "campylobacter", "cin", "4c", "cin if age < 10"] #CIN if age < 10
 sputum = ["bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c"]
 ear = ["bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c"]
