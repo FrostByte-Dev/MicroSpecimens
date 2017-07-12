@@ -1,30 +1,30 @@
 """
-Provides recommended agar plates by time of micro specimen. Can also search up plates/elements to see which specimen site uses them.
+Provides recommended agar plates by type of micro specimen. Can also search up plates/elements to see which specimen site uses them.
+Next version will be using a dict containing list of strings for the specimen e.g(mac and smac for ear. This version is very poorly optimized
 """
 stool = ["selenite", "hektoen", "mac", "smac", "macconkey", "sorbitol", "campy", "campylobacter", "cin", "4c", "cin if age < 10"] #CIN if age < 10
-sputum = ["bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c"]
-ear = ["bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c"]
+sputum = ["blood","bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c","blood and choc in CO2"]
+ear = ["blood","bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c","blood and choc in CO2"]
 throat = ["bap anaerobic", "sba anaerobic", "4c"]
-urine = ["bap", "sba", "mac", "macconkey", "cna", "cna only if turbid", "4c"]
+urine = ["blood","bap", "sba", "mac", "macconkey", "cna", "cna only if turbid", "4c"]
 mro = ["mrsa", "mac cpd", "bea"] #All of these plates are unique to MRO screening
-wound = ["bap", "sba", "mac", "macconkey", "gram", "gram stain"]
-soft_tissue = ["bap", "sba", "mac", "macconkey", "gram", "gram stain"]
-bite_wound = ["bap", "sba", "mac", "macconkey", "gram", "gram stain", "choc", "chocolate"]
-deep_wound = ["bap", "sba", "mac", "macconkey", "gram", "gram stain", "bap anaerobic", "sba anaerobic"]
-below_waist = ["bap", "sba", "mac", "macconkey", "gram", "gram stain", "cna"]
-csf = ["bap", "sba", "choc", "chocolate", "gram", "gram stain"]
+wound = ["blood","bap", "sba", "mac", "macconkey", "gram", "gram stain","bap anaerobic", "sba anaerobic","blood in CO2"]
+soft_tissue = ["blood","bap", "sba", "mac", "macconkey", "gram", "gram stain","bap anaerobic", "sba anaerobic","blood in CO2"]
+bite_wound = ["blood","bap", "sba", "mac", "macconkey", "gram", "gram stain", "choc", "chocolate","blood in CO2"]
+deep_wound = ["blood","bap", "sba", "mac", "macconkey", "gram", "gram stain", "bap anaerobic", "sba anaerobic","blood in CO2"]
+below_waist = ["blood","bap", "sba", "mac", "macconkey", "gram", "gram stain", "cna","blood in CO2"]
+csf = ["blood","bap", "sba", "choc", "chocolate", "gram", "gram stain","blood in CO2"]
 sterile = ["thio", "thioglycollate", "sba", "bap", "choc", "mac", "macconkey", "gram", "gram stain"]
-eye = ["bap", "sba", "choc", "chocolate", "gram", "gram stain"]
-vaginal = ["gram", "gram stain", "wet", "wet_prep"]
+eye = ["blood""bap", "sba", "choc", "chocolate", "gram", "gram stain","blood in CO2"]
+vaginal = ["gram" , "gram stain", "wet", "wet_prep"]
 groupbscreen = ["group b broth", "cna", "cna is a subculture from broth"]
 cervical = ["chocolate", "choc", "thayer martin", "tm"]
 urethral = ["chocolate", "choc", "thayer martin", "tm", "gram", "gram stain", "wet", "wet_prep"]
-term_list = ["selenite", "hektoen", "mac", "smac", "macconkey", "sorbitol", "campy", "campylobacter", "cin", "4c", "cin if age < 10", "bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c", "bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c", "bap anaerobic", "sba anaerobic", "4c", "bap", "sba", "mac", "macconkey", "cna", "cna only if turbid", "mrsa", "mac cpd", "bea", "bap", "sba", "mac", "macconkey", "gram", "gram stain", "bap anaerobic", "sba anaerobic", "cna", "thio", "thioglycollate", "wet", "wet_prep", "group b broth", "cna", "cna is a subculture from broth", "thayer martin", "tm"]
+term_list = ["selenite", "hektoen", "mac", "smac", "macconkey", "sorbitol", "campy", "campylobacter", "cin", "4c", "cin if age < 10", "bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c", "bap", "sba", "choc", "chocolate", "mac", "macconkey", "gram", "gram stain", "4c", "bap anaerobic", "sba anaerobic", "4c", "bap", "sba", "mac", "macconkey", "cna", "cna only if turbid", "mrsa", "mac cpd", "bea", "bap", "sba", "mac", "macconkey", "gram", "gram stain", "bap anaerobic", "sba anaerobic", "cna", "thio", "thioglycollate", "wet", "wet_prep", "group b broth", "cna", "cna is a subculture from broth", "thayer martin", "tm","blood and choc in CO2","blood in CO2","blood"]
 specimen_list = [[stool], [sputum], [ear], [throat], [urine], [mro], [wound], [soft_tissue], [bite_wound], [deep_wound], [below_waist], [csf], [sterile], [eye], [vaginal], [groupbscreen], [cervical], [urethral]]
-
+specimen_string=["stool","sputum","ear","throat","urine","mro","wound","soft_tissue","bite_wound","deep_wound","below_waist","csf", "sterile", "eye","vaginal", "groupbscreen","cervical","urethral"]
 #Add a loop that will keep the program going as long as the user does not enter "exit"
 menu_option = 0
-menucounter = 0 #Loop for going back to menu if input is not available
 while menu_option != "exit":
     print("Welcome to the micro plate-o-bot 4000 main menu. What would you like to do?")
     print("1-Specimen Search:Enter 1 to view a specimen type and see the plates required as well as further information")
@@ -32,71 +32,26 @@ while menu_option != "exit":
     print("3-Term List:Enter 3 to see a list of all the terms contained. I recommend this before using the element back search.")
     print("Enter exit once you are done to close the program.")
     menu_option = input("Enter your decision here: ")
-
+    jcounter= 0
     if menu_option == "1":
-        while menucounter < 1:
-            print("Welcome. Enter the type of specimen you would like to search up. Please enter the type as designated in the following list")
-            print("stool,sputum,ear,throat,urine,mro,wound,soft_tissue,bite_wound,deep_wound,below_waist,csf, sterile, eye. vaginal, groupbscreen,cervical,urethral ")
+        while jcounter != 1:
+            print("Welcome. Enter the type of specimen you would like to search up. Please enter the type as designated in the following list without the ' ")
+            print(specimen_string)
             specimen = input("Enter the type here: ")
             specimen = specimen.lower()
-            if specimen == "stool":
-                print(stool)
-                menucounter = 2
-            elif specimen == "sputum":
-                print(sputum)
-                menucounter = 2
-            elif specimen == "ear":
-                print(ear)
-                menucounter = 2
-            elif specimen == "throat":
-                print(throat)
-                menucounter = 2
-            elif specimen == "urine":
-                print(urine)
-                menucounter = 2
-            elif specimen == "mro":
-                print(mro)
-                menucounter = 2
-            elif specimen == "wound":
-                print(wound)
-                menucounter = 2
-            elif specimen == "soft_tissue":
-                print(soft_tissue)
-            elif specimen == "bite_wound":
-                print(bite_wound)
-                menucounter = 2
-            elif specimen == "deep_wound":
-                print(deep_wound)
-                menucounter = 2
-            elif specimen == "below_waist":
-                print(below_waist)
-                menucounter = 2
-            elif specimen == "csf":
-                print(csf)
-                menucounter = 2
-            elif specimen == "sterile":
-                print(sterile)
-                menucounter = 2
-            elif specimen == "eye":
-                print(eye)
-                menucounter = 2
-            elif specimen == "vaginal":
-                print(vaginal)
-                menucounter = 2
-            elif specimen == "groupbscreen":
-                print(groupbscreen)
-                menucounter = 2
-            elif specimen == "cervical":
-                print(cervical)
-                menucounter = 2
-            elif specimen == "urethral":
-                print(urethral)
-                menucounter = 2
+            if specimen in specimen_string:
+                locationspecimen= (specimen_string.index(specimen))
+                print(specimen_list[locationspecimen])
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+                print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+
+                jcounter = 1  #Prevents looping here if a good answer is given
             else:
                 print("That is not an acceptable specimen. Please try again using the provided list.")
+
     elif menu_option == "2":
         print("Enter the type of plate or elements you would like to look up, note that the database only contains certain variations which are generally short forms and acronyms.")
-        plate = input("Enter the desired plate or element here: ")
+        plate = input("Enter the desired plate or element here: ") #Should look for a way to optimize this to a single if. Working on it..
         plate = plate.lower()
         if plate in stool:
             print("Element contained in stool processing")
@@ -134,6 +89,9 @@ while menu_option != "exit":
             print("Element contained in cervical processing")
         if plate in urethral:
             print("Element contained in urethral processing")
+        if plate in term_list: #Prevents screen from being too cluttered
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+            print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         if plate not in term_list:
             print("Choice is not in list of terms. Please consult the following list")
             term_listdup = set(term_list)
@@ -141,5 +99,5 @@ while menu_option != "exit":
     elif menu_option == "3":
         term_listdup = set(term_list) #When making the term list I was too lazy to check for duplicates so this removes them.....
         print(sorted(term_listdup)) #alphabetical order for ease of use
-        #Need to work out way to separate lists and sort individual terms alphabetically ratherh than sublists
-    
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
